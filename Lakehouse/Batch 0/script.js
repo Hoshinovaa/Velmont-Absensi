@@ -1,5 +1,5 @@
 const API =
-"https://script.google.com/macros/s/AKfycby862RrzlPUrttx1q2ZMlc4ajg8eQ2TW5e-VqEzZ_AIB8NMlEeCXvLSoQAiEbIBGqGA/exec";
+"https://script.google.com/macros/s/AKfycbyqZ6rFH_ArSNc04BzJruGADqz5oHQQ83M8QVaSPPXHbTtGqUCNYQ93SA6s1Ac5Mduc/exec";
 
 let pegawaiSelect = null;
 let currentMode = "auto";

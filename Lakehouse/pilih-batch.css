@@ -49,9 +49,9 @@ body{
 }
 
 .logo{
-    width:180px;
-    margin-bottom:20px;
-
+    width:215px;
+    margin-top:30px;
+    
     cursor:pointer;
 
     transition:all .3s ease;
@@ -85,8 +85,6 @@ body{
     padding:35px;
 
     border-radius:25px;
-
-    text-decoration:none;
 
     text-align:center;
 
@@ -142,7 +140,7 @@ body{
 
 }
 
-.batch-card span{
+.batch-btn{
 
     display:inline-block;
 
@@ -162,6 +160,8 @@ body{
 
     font-weight:600;
 
+    text-decoration:none;
+
     box-shadow:
         0 6px 16px rgba(184,150,92,.25);
 
@@ -173,7 +173,7 @@ body{
     cursor:pointer;
 }
 
-.batch-card span:hover{
+.batch-btn:hover{
 
     background:linear-gradient(
         135deg,
@@ -185,7 +185,6 @@ body{
 
     box-shadow:
         0 10px 24px rgba(184,150,92,.35);
-
 }
 
 @media(max-width:768px){
