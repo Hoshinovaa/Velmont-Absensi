@@ -659,3 +659,27 @@ input[type="date"].modern-input {
 .back-wrapper{
     margin-bottom:20px;
 }
+
+.ranking-wrapper {
+  margin-top: 15px;
+}
+
+.btn-ranking {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.3s;
+  background: 
+    var(--gold);
+  color: white;
+}
+
+.btn-ranking:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(254, 237, 106, 0.3);
+}

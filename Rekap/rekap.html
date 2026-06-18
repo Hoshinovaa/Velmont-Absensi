@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rekap Jam Duty</title>
+
+<link rel="stylesheet" href="rekap.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="back-wrapper">
+
+        <button
+            class="btn-back"
+            onclick="window.location.href='../pilih-batch.html'"
+        >
+            Kembali
+        </button>
+
+    </div>
+
+
+    <div class="header">
+
+        <img
+            src="../assets/VL.png"
+            class="logo"
+            alt="Velmont Logo"
+        >
+        
+        <h1>Rekap Jam Duty</h1>
+
+    </div>
+
+    <div class="card">
+
+        <div class="table-header">
+
+            <div>Rank</div>
+            <div>Nama</div>
+            <div>Batch</div>
+            <div>Total Jam</div>
+
+        </div>
+
+        <div id="rankingList">
+
+            <div class="loading">
+                Memuat data...
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="rekap.js"></script>
+
+</body>
+</html>

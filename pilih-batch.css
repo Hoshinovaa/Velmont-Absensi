@@ -203,3 +203,72 @@ body{
     }
 
 }
+
+.rekap-card {
+    margin-top: 20px;
+    width: 100%;
+
+    text-decoration: none;
+    color: var(--navy);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 25px;
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+
+    transition: all 0.3s ease;
+}
+
+.rekap-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+}
+
+.rekap-icon{
+
+    width:80px;
+    height:80px;
+
+    margin:auto auto 20px;
+
+    border-radius:20px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        var(--navy),
+        #4f7693
+    );
+
+    color:var(--white);
+
+    font-size:34px;
+
+    transition:.3s;
+}
+
+.rekap-content h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.rekap-content span {
+    display: block;
+    margin-top: 6px;
+
+    color: #6b7280;
+    font-size: 14px;
+}
