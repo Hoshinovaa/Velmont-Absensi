@@ -51,7 +51,7 @@ body{
 .hero{
 
     text-align:center;
-    margin-bottom:50px;
+    margin-bottom:40px;
 }
 
 .logo{
@@ -65,18 +65,11 @@ body{
 .hero h1{
 
     color:var(--navy);
-
-    margin-top:10px;
-
     font-size:3rem;
 }
 
 .hero p{
-
-    margin-top:10px;
-
     color:var(--gold);
-
     font-weight:600;
 }
 
@@ -212,8 +205,6 @@ body{
 .company-card p{
 
     color:#6b7280;
-
-    margin-top:8px;
 }
 
 .company-btn{
@@ -249,70 +240,6 @@ body{
 
     box-shadow:
     0 10px 20px rgba(184,150,92,.35);
-}
-
-/* REKAP */
-
-.rekap-card{
-
-    margin-top:40px;
-
-    background:white;
-
-    border-radius:25px;
-
-    padding:25px;
-
-    text-decoration:none;
-
-    display:flex;
-    align-items:center;
-    gap:20px;
-
-    box-shadow:
-    0 10px 25px rgba(0,0,0,.08);
-
-    transition:.3s;
-}
-
-.rekap-card:hover{
-
-    transform:
-    translateY(-5px);
-
-    box-shadow:
-    0 20px 40px rgba(30,52,84,.15);
-}
-
-.rekap-icon{
-
-    width:80px;
-    height:80px;
-
-    border-radius:20px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    font-size:36px;
-
-    background:
-    linear-gradient(
-        135deg,
-        var(--navy),
-        #4F7693
-    );
-}
-
-.rekap-card h2{
-
-    color:var(--navy);
-}
-
-.rekap-card p{
-
-    color:#6b7280;
 }
 
 /* FLOAT */
@@ -363,4 +290,20 @@ footer p{
     margin-top:50px;
 
     color:#6b7280;
+}
+
+.company-icon{
+
+    width:140px;
+    height:140px;
+
+    margin:auto;
+
+    border-radius:20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:42px;
 }
