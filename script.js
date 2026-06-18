@@ -18,15 +18,23 @@ async function loadPegawai() {
 
     select.innerHTML = "";
 
+    const emptyOption =
+    document.createElement("option");
+
+    emptyOption.value = "";
+    emptyOption.textContent = "";
+
+    select.appendChild(emptyOption);
+
     data.forEach(nama => {
 
-      const option =
-        document.createElement("option");
+        const option =
+            document.createElement("option");
 
-      option.value = nama;
-      option.textContent = nama;
+        option.value = nama;
+        option.textContent = nama;
 
-      select.appendChild(option);
+        select.appendChild(option);
 
     });
 
@@ -38,6 +46,7 @@ async function loadPegawai() {
     pegawaiSelect = new TomSelect("#pegawai", {
 
       create: false,
+      allowedEmptyOption: true,
 
       placeholder: "Silahkan Masukkan Nama Anda...",
 
