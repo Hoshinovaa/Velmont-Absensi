@@ -38,6 +38,15 @@ async function loadPegawai(){
 
 }
 
+new TomSelect("#pegawai", {
+    create: false,
+    sortField: {
+        field: "text",
+        direction: "asc"
+    },
+    placeholder: "Cari nama pegawai..."
+});
+
 async function absen(type){
 
   const nama =
