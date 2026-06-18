@@ -1,22 +1,24 @@
 const API =
 "https://script.google.com/macros/s/AKfycby862RrzlPUrttx1q2ZMlc4ajg8eQ2TW5e-VqEzZ_AIB8NMlEeCXvLSoQAiEbIBGqGA/exec";
 
-async function loadPegawai(){
+let pegawaiSelect = null;
 
-  try{
+// =========================
+// LOAD PEGAWAI
+// =========================
+async function loadPegawai() {
 
-    const response =
-      await fetch(API);
+  try {
 
-    const data =
-      await response.json();
+    const response = await fetch(API);
+    const data = await response.json();
 
     const select =
       document.getElementById("pegawai");
 
     select.innerHTML = "";
 
-    data.forEach(nama=>{
+    data.forEach(nama => {
 
       const option =
         document.createElement("option");
@@ -28,7 +30,27 @@ async function loadPegawai(){
 
     });
 
-  }catch(err){
+    // Inisialisasi TomSelect setelah data masuk
+    if (pegawaiSelect) {
+      pegawaiSelect.destroy();
+    }
+
+    pegawaiSelect = new TomSelect("#pegawai", {
+
+      create: false,
+
+      placeholder: "Cari nama pegawai...",
+
+      sortField: {
+        field: "text",
+        direction: "asc"
+      }
+
+    });
+
+  } catch (err) {
+
+    console.error(err);
 
     showToast(
       "Gagal mengambil data pegawai"
@@ -38,16 +60,10 @@ async function loadPegawai(){
 
 }
 
-new TomSelect("#pegawai", {
-    create: false,
-    sortField: {
-        field: "text",
-        direction: "asc"
-    },
-    placeholder: "Cari nama pegawai..."
-});
-
-async function absen(type){
+// =========================
+// ABSEN
+// =========================
+async function absen(type) {
 
   const nama =
     document.getElementById("pegawai").value;
@@ -55,23 +71,35 @@ async function absen(type){
   const shift =
     document.getElementById("shift").value;
 
+  if (!nama) {
+
+    showToast(
+      "Silakan pilih pegawai terlebih dahulu"
+    );
+
+    return;
+  }
+
   document.getElementById("status")
     .innerText = "Mengirim absensi...";
 
-  try{
+  try {
 
-    const response =
-      await fetch(API,{
+    const response = await fetch(API, {
 
-        method:"POST",
+      method: "POST",
 
-        body:JSON.stringify({
-          name:nama,
-          shift:shift,
-          type:type
-        })
+      headers: {
+        "Content-Type": "application/json"
+      },
 
-      });
+      body: JSON.stringify({
+        name: nama,
+        shift: shift,
+        type: type
+      })
+
+    });
 
     const result =
       await response.json();
@@ -81,37 +109,49 @@ async function absen(type){
 
     showToast(result.message);
 
-  }catch(err){
+  } catch (err) {
+
+    console.error(err);
 
     document.getElementById("status")
       .innerText = "Terjadi kesalahan";
 
-    showToast("Terjadi kesalahan");
+    showToast(
+      "Terjadi kesalahan saat mengirim absensi"
+    );
 
   }
 
 }
 
-function updateClock(){
+// =========================
+// CLOCK
+// =========================
+function updateClock() {
 
   const now = new Date();
 
   document.getElementById("jam")
     .innerText =
-      now.toLocaleTimeString("id-ID");
+    now.toLocaleTimeString("id-ID");
 
   document.getElementById("tanggal")
     .innerText =
-      now.toLocaleDateString("id-ID",{
-        weekday:"long",
-        day:"numeric",
-        month:"long",
-        year:"numeric"
-      });
+    now.toLocaleDateString("id-ID", {
+
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+
+    });
 
 }
 
-function showToast(message){
+// =========================
+// TOAST
+// =========================
+function showToast(message) {
 
   const toast =
     document.getElementById("toast");
@@ -120,15 +160,18 @@ function showToast(message){
 
   toast.classList.add("show");
 
-  setTimeout(()=>{
+  setTimeout(() => {
 
     toast.classList.remove("show");
 
-  },3000);
+  }, 3000);
 
 }
 
-setInterval(updateClock,1000);
+// =========================
+// INIT
+// =========================
+setInterval(updateClock, 1000);
 
 updateClock();
 
