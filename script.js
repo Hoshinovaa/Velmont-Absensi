@@ -1,5 +1,5 @@
 const API =
-"https://script.google.com/macros/s/AKfycbw3tODjEmf3ft4ho_zUzAmid_CzPP8-5wDYNnndtckGZrj3oO6GaQTwwZxOy51gC0bf/exec";
+"https://script.google.com/macros/s/AKfycbzZWcuisMhlf2IY9bYMmZHxZVbYjRGYyzEkCrS9l0a9b-x05jipDFPavuh5lmSgzEv3/exec";
 
 async function loadPegawai(){
 
