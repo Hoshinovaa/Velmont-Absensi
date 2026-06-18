@@ -121,17 +121,108 @@ select{
   transition:.2s;
 }
 
-.btn-masuk{
-  background:var(--success);
+.btn-masuk {
+
+  width: 100%;
+
+  height: 52px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    #10b981,
+    #059669
+  );
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all .25s ease;
+
 }
 
-.btn-pulang{
-  background:var(--danger);
+.btn-masuk:hover {
+
+  background: linear-gradient(
+    135deg,
+    #34d399,
+    #10b981
+  );
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(16,185,129,.25);
+
 }
 
-.btn-masuk:hover,
-.btn-pulang:hover{
-  transform:translateY(-2px);
+.btn-masuk:active {
+
+  transform: translateY(0);
+
+  box-shadow:
+    0 4px 10px rgba(16,185,129,.15);
+
+}
+
+.btn-pulang {
+
+  width: 100%;
+
+  height: 52px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    #ef4444,
+    #dc2626
+  );
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all .25s ease;
+
+}
+
+.btn-pulang:hover {
+
+  background: linear-gradient(
+    135deg,
+    #f87171,
+    #ef4444
+  );
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(239,68,68,.25);
+
+}
+
+.btn-pulang:active {
+
+  transform: translateY(0);
+
+  box-shadow:
+    0 4px 10px rgba(239,68,68,.15);
+
 }
 
 .status-box{
