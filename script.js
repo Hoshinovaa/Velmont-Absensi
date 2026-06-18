@@ -2,6 +2,7 @@ const API =
 "https://script.google.com/macros/s/AKfycby862RrzlPUrttx1q2ZMlc4ajg8eQ2TW5e-VqEzZ_AIB8NMlEeCXvLSoQAiEbIBGqGA/exec";
 
 let pegawaiSelect = null;
+let currentMode = "auto";
 
 // =========================
 // LOAD PEGAWAI
@@ -19,7 +20,7 @@ async function loadPegawai() {
     select.innerHTML = "";
 
     const emptyOption =
-    document.createElement("option");
+      document.createElement("option");
 
     emptyOption.value = "";
     emptyOption.textContent = "";
@@ -28,17 +29,24 @@ async function loadPegawai() {
 
     data.forEach(nama => {
 
-        const option =
-            document.createElement("option");
+      if (
+        !nama ||
+        nama.trim() === "" ||
+        nama.includes("#REF!")
+      ) {
+        return;
+      }
 
-        option.value = nama;
-        option.textContent = nama;
+      const option =
+        document.createElement("option");
 
-        select.appendChild(option);
+      option.value = nama;
+      option.textContent = nama;
+
+      select.appendChild(option);
 
     });
 
-    // Inisialisasi TomSelect setelah data masuk
     if (pegawaiSelect) {
       pegawaiSelect.destroy();
     }
@@ -46,9 +54,11 @@ async function loadPegawai() {
     pegawaiSelect = new TomSelect("#pegawai", {
 
       create: false,
+
       allowedEmptyOption: true,
 
-      placeholder: "Silahkan Masukkan Nama Anda...",
+      placeholder:
+        "Silahkan Masukkan Nama Anda...",
 
       sortField: {
         field: "text",
@@ -56,6 +66,8 @@ async function loadPegawai() {
       }
 
     });
+
+    pegawaiSelect.clear();
 
   } catch (err) {
 
@@ -66,6 +78,87 @@ async function loadPegawai() {
     );
 
   }
+
+}
+
+// =========================
+// MODE SWITCH
+// =========================
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+    const autoBtn =
+      document.getElementById("autoBtn");
+
+    const manualBtn =
+      document.getElementById("manualBtn");
+
+    const manualFields =
+      document.getElementById("manualFields");
+
+    const btnMasuk =
+      document.getElementById("btnMasuk");
+
+    const btnPulang =
+      document.getElementById("btnPulang");
+
+    if (
+      !autoBtn ||
+      !manualBtn
+    ) return;
+
+    autoBtn.addEventListener("click", () => {
+
+      currentMode = "auto";
+
+      manualFields.style.display = "none";
+
+      btnMasuk.style.display = "block";
+      btnPulang.style.display = "block";
+
+      autoBtn.classList.add("active");
+      manualBtn.classList.remove("active");
+
+    });
+
+    manualBtn.addEventListener("click", () => {
+
+      currentMode = "manual";
+
+      manualFields.style.display = "block";
+
+      btnMasuk.style.display = "none";
+      btnPulang.style.display = "none";
+
+      manualBtn.classList.add("active");
+      autoBtn.classList.remove("active");
+
+    });
+
+  }
+);
+
+// =========================
+// PERBAIKI ABSEN
+// =========================
+function perbaikiAbsen() {
+
+  const selectedType =
+    document.querySelector(
+      'input[name="manualType"]:checked'
+    );
+
+  if (!selectedType) {
+
+    showToast(
+      "Pilih jenis absensi"
+    );
+
+    return;
+  }
+
+  absen(selectedType.value);
 
 }
 
@@ -83,42 +176,97 @@ async function absen(type) {
   if (!nama) {
 
     showToast(
-      "Silakan pilih pegawai terlebih dahulu"
+      "Silakan pilih nama pegawai"
     );
 
     return;
   }
 
+  let payload = {
+
+    name: nama,
+    shift: shift,
+    type: type,
+    mode: currentMode
+
+  };
+
+  if (currentMode === "manual") {
+
+    payload.manualDate =
+      document.getElementById("manualDate").value;
+
+    payload.manualTime =
+      document.getElementById("manualTime").value;
+
+    if (
+      !payload.manualDate ||
+      !payload.manualTime
+    ) {
+
+      showToast(
+        "Tanggal dan jam wajib diisi"
+      );
+
+      return;
+    }
+
+    const timePattern =
+      /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/;
+
+    if (
+      !timePattern.test(
+        payload.manualTime
+      )
+    ) {
+
+      showToast(
+        "Format jam harus HH:mm:ss"
+      );
+
+      return;
+    }
+
+  }
+
   document.getElementById("status")
-    .innerText = "Mengirim absensi...";
+    .innerText =
+    "Mengirim absensi...";
 
   try {
 
-    const response = await fetch(API, {
+    const response =
+      await fetch(API, {
 
-      method: "POST",
-      body: JSON.stringify({
-        name: nama,
-        shift: shift,
-        type: type
-      })
+        method: "POST",
 
-    });
+        headers: {
+          "Content-Type":
+            "text/plain;charset=utf-8"
+        },
+
+        body: JSON.stringify(payload)
+
+      });
 
     const result =
       await response.json();
 
     document.getElementById("status")
-      .innerText = result.message;
+      .innerText =
+      result.message;
 
-    showToast(result.message);
+    showToast(
+      result.message
+    );
 
   } catch (err) {
 
     console.error(err);
 
     document.getElementById("status")
-      .innerText = "Terjadi kesalahan";
+      .innerText =
+      "Terjadi kesalahan";
 
     showToast(
       "Terjadi kesalahan saat mengirim absensi"
@@ -133,22 +281,26 @@ async function absen(type) {
 // =========================
 function updateClock() {
 
-  const now = new Date();
+  const now =
+    new Date();
 
   document.getElementById("jam")
     .innerText =
-    now.toLocaleTimeString("id-ID");
+    now.toLocaleTimeString(
+      "id-ID"
+    );
 
   document.getElementById("tanggal")
     .innerText =
-    now.toLocaleDateString("id-ID", {
-
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric"
-
-    });
+    now.toLocaleDateString(
+      "id-ID",
+      {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      }
+    );
 
 }
 
@@ -160,13 +312,18 @@ function showToast(message) {
   const toast =
     document.getElementById("toast");
 
-  toast.innerText = message;
+  toast.innerText =
+    message;
 
-  toast.classList.add("show");
+  toast.classList.add(
+    "show"
+  );
 
   setTimeout(() => {
 
-    toast.classList.remove("show");
+    toast.classList.remove(
+      "show"
+    );
 
   }, 3000);
 
@@ -175,7 +332,10 @@ function showToast(message) {
 // =========================
 // INIT
 // =========================
-setInterval(updateClock, 1000);
+setInterval(
+  updateClock,
+  1000
+);
 
 updateClock();
 

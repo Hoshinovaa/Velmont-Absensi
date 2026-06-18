@@ -290,3 +290,231 @@ select{
 .ts-placeholder {
   color: #8a8f98 !important;
 }
+
+/* =========================
+   MODE SWITCH
+========================= */
+
+.mode-switch {
+
+  display: flex;
+
+  background: #f4f6f9;
+
+  border-radius: 14px;
+
+  padding: 4px;
+
+  margin-bottom: 20px;
+
+  gap: 4px;
+}
+
+.mode-btn {
+
+  flex: 1;
+
+  border: none;
+
+  background: transparent;
+
+  color: #5f6b7a;
+
+  font-family: inherit;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  padding: 12px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  transition: all .25s ease;
+}
+
+.mode-btn:hover {
+
+  background: rgba(31,59,92,.08);
+
+}
+
+.mode-btn.active {
+
+  background: linear-gradient(
+    135deg,
+    #1f3b5c,
+    #b8903c
+  );
+
+  color: white;
+
+  box-shadow:
+    0 8px 20px rgba(31,59,92,.25);
+
+}
+
+/* =========================
+   MODERN INPUT
+========================= */
+
+.input-group {
+
+  position: relative;
+
+  margin-bottom: 16px;
+}
+
+.modern-input {
+
+  width: 100%;
+
+  height: 56px;
+
+  border: 1px solid #d7dbe2;
+
+  border-radius: 14px;
+
+  padding: 0 16px;
+
+  font-size: 15px;
+
+  font-family: inherit;
+
+  background: #fff;
+
+  transition: all .25s ease;
+
+  box-sizing: border-box;
+}
+
+.modern-input:focus {
+
+  outline: none;
+
+  border-color: #1f3b5c;
+
+  box-shadow:
+    0 0 0 4px rgba(31,59,92,.10);
+
+}
+
+.modern-input::placeholder {
+
+  color: #9aa3af;
+}
+
+/* DATE ICON */
+
+input[type="date"].modern-input {
+
+  cursor: pointer;
+}
+
+.manual-radio {
+
+  display: flex;
+  gap: 12px;
+
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.radio-card {
+
+  flex: 1;
+
+  cursor: pointer;
+
+  position: relative;
+}
+
+.radio-card input {
+
+  display: none;
+}
+
+.radio-card span {
+
+  display: block;
+
+  text-align: center;
+
+  padding: 14px;
+
+  border-radius: 12px;
+
+  border: 1px solid #d7dbe2;
+
+  background: white;
+
+  font-weight: 600;
+
+  transition: .25s;
+}
+
+.radio-card input:checked + span {
+
+  background: #1f3b5c;
+
+  color: white;
+
+  border-color: #1f3b5c;
+
+  box-shadow:
+    0 6px 16px rgba(31,59,92,.2);
+}
+
+.btn-perbaiki {
+
+  width: 100%;
+
+  height: 52px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    #10b981,
+    #059669
+  );
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all .25s ease;
+
+}
+
+.btn-perbaiki:hover {
+
+  background: linear-gradient(
+    135deg,
+    #34d399,
+    #10b981
+  );
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(16,185,129,.25);
+
+}
+
+.btn-perbaiki:active {
+
+  transform: translateY(0);
+
+  box-shadow:
+    0 4px 10px rgba(16,185,129,.15);
+
+}
