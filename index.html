@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velmont Attendance System</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+
+  <header class="header">
+
+    <img src="assets/VE-logo.png" alt="Velmont Logo" class="logo">
+
+    <div>
+      <h1>VELMONT ENTERPRISE</h1>
+      <p>Employee Attendance System</p>
+    </div>
+
+  </header>
+
+  <div class="main-grid">
+
+    <div class="card">
+
+      <h2>Attendance Form</h2>
+
+      <label>Employee Name</label>
+
+      <select id="pegawai">
+        <option>Loading...</option>
+      </select>
+
+      <label>Shift</label>
+
+      <select id="shift">
+        <option value="1">Shift 1</option>
+        <option value="2">Shift 2</option>
+        <option value="3">Shift 3</option>
+        <option value="4">Shift 4</option>
+        <option value="5">Shift 5</option>
+        <option value="6">Shift 6</option>
+      </select>
+
+      <button class="btn-masuk" onclick="absen('masuk')">
+        Absen Masuk
+      </button>
+
+      <button class="btn-pulang" onclick="absen('pulang')">
+        Absen Pulang
+      </button>
+
+      <div class="status-box">
+
+        <span id="status">
+          Siap melakukan absensi
+        </span>
+
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <h2>Information</h2>
+
+      <div class="info-card">
+
+        <div class="info-item">
+          <span>Tanggal</span>
+          <strong id="tanggal"></strong>
+        </div>
+
+        <div class="info-item">
+          <span>Jam</span>
+          <strong id="jam"></strong>
+        </div>
+
+      </div>
+
+      <div class="welcome-box">
+
+        <h3>Velmont Lakehouse</h3>
+
+        <p>
+          Silakan pilih nama pegawai dan shift,
+          kemudian lakukan absensi masuk atau pulang.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
