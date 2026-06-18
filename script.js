@@ -39,7 +39,7 @@ async function loadPegawai() {
 
       create: false,
 
-      placeholder: "Cari nama pegawai...",
+      placeholder: "Silahkan Masukkan Nama Anda...",
 
       sortField: {
         field: "text",
