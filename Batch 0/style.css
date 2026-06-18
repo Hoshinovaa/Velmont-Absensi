@@ -1,7 +1,9 @@
 :root{
-  --navy:#233D5B;
-  --gold:#C5A06A;
-  --background:#F7F5F3;
+  --navy:#1E3454;
+  --navy-dark:#132642;
+  --gold:#B8965C;
+  --gold-light:#D4B483;
+  --background:#F8F6F2;
   --white:#FFFFFF;
   --success:#2E7D32;
   --danger:#C62828;
@@ -266,7 +268,7 @@ select{
   background:linear-gradient(
     135deg,
     var(--navy),
-    #35557a
+    #304C70
   );
 
   color:white;
@@ -436,8 +438,8 @@ select{
 
   background: linear-gradient(
     135deg,
-    #1f3b5c,
-    #b8903c
+    var(--navy),
+    var(--gold)
   );
 
   color: white;
@@ -485,10 +487,10 @@ select{
 
   outline: none;
 
-  border-color: #1f3b5c;
+  border-color: var(--navy);
 
   box-shadow:
-    0 0 0 4px rgba(31,59,92,.10);
+    0 0 0 4px rgba(30,52,84,.10);
 
 }
 
@@ -522,6 +524,24 @@ input[type="date"].modern-input {
   position: relative;
 }
 
+.radio-card:hover span {
+
+  background: linear-gradient(
+    135deg,
+    rgba(30,52,84,.08),
+    rgba(184,150,92,.12)
+  );
+
+  border-color: var(--gold);
+
+  color: var(--navy);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(30,52,84,.08);
+}
+
 .radio-card input {
 
   display: none;
@@ -548,11 +568,11 @@ input[type="date"].modern-input {
 
 .radio-card input:checked + span {
 
-  background: #1f3b5c;
+  background: var(--navy);
 
   color: white;
 
-  border-color: #1f3b5c;
+  border-color: var(--navy);
 
   box-shadow:
     0 6px 16px rgba(31,59,92,.2);
@@ -608,4 +628,34 @@ input[type="date"].modern-input {
   box-shadow:
     0 4px 10px rgba(16,185,129,.15);
 
+}
+
+.btn-back{
+
+    padding:10px 18px;
+
+    border:none;
+    border-radius:12px;
+
+    background:var(--navy);
+    color:white;
+
+    font-size:14px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.btn-back:hover{
+
+    background:var(--gold);
+
+    transform:translateY(-2px);
+
+}
+
+.back-wrapper{
+    margin-bottom:20px;
 }

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Velmont Enterprise Attendance</title>
+
+  <link rel="icon" type="image/png" href="/assets/VL.png">
+
+  <link rel="stylesheet" href="style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="container">
+
+     <div class="back-wrapper">
+        <button class="btn-back" onclick="window.location.href='../index.html'">
+          Back
+        </button>
+    </div>
+
+    <header class="header">
+
+      <img
+        src="../assets/VL.png"
+        alt="Velmont Logo"
+        class="logo"
+      >
+
+      <div>
+
+        <h1>VELMONT LAKEHOUSE</h1>
+
+        <p>Employee Attendance System</p>
+
+      </div>
+
+    </header>
+
+    <div class="main-grid">
+
+      <!-- LEFT -->
+
+      <div class="card">
+
+        <h2>Attendance Form</h2>
+
+        <!-- MODE -->
+
+        <label>Attendance Mode</label>
+
+        <div class="mode-switch">
+
+        <button
+            id="autoBtn"
+            class="mode-btn active"
+            type="button"
+        >
+            ⚡ Otomatis
+        </button>
+
+        <button
+            id="manualBtn"
+            class="mode-btn"
+            type="button"
+        >
+            ✏️ Manual
+        </button>
+
+        </div>
+
+        <!-- EMPLOYEE -->
+
+        <label>Employee Name</label>
+
+        <select id="pegawai">
+
+          <option value="">
+            Memuat data pegawai...
+          </option>
+
+        </select>
+
+        <!-- SHIFT -->
+
+        <label>Shift</label>
+
+        <select id="shift">
+
+          <option value="1">Shift 1</option>
+          <option value="2">Shift 2</option>
+          <option value="3">Shift 3</option>
+          <option value="4">Shift 4</option>
+          <option value="5">Shift 5</option>
+          <option value="6">Shift 6</option>
+
+        </select>
+
+        <!-- MANUAL MODE -->
+
+        <div id="manualFields" style="display:none;">
+            <label>Tanggal</label>
+            
+            <div class="input-group">
+                <input
+                    type="date"
+                    id="manualDate"
+                    class="modern-input"
+                >
+            </div>
+            
+            <label>Jam</label>
+            
+            <div class="input-group">
+                <input
+                    type="text"
+                    id="manualTime"
+                    class="modern-input"
+                    placeholder="Contoh: 08:30:00"
+                    maxlength="8"
+                >
+            </div>
+            
+            <label>Absen yang ingin diperbaiki</label>
+
+            <div class="manual-radio">
+                <label class="radio-card">
+                    <input
+                        type="radio"
+                        name="manualType"
+                        value="masuk"
+                        checked
+                    >
+
+                    <span>
+                        Absen Masuk
+                    </span>
+
+                </label>
+
+                <label class="radio-card">
+                    <input
+                        type="radio"
+                        name="manualType"
+                        value="pulang"
+                    >
+
+                    <span>
+                        Absen Pulang
+                    </span>
+
+                </label>
+
+            </div>
+
+            <button
+                class="btn-perbaiki"
+                onclick="perbaikiAbsen()"
+            >
+                Perbaiki Absen
+            </button>
+
+            
+
+        </div>
+
+        <!-- BUTTONS -->
+
+        <button
+          id = "btnMasuk"  
+          class="btn-masuk"
+          onclick="absen('masuk')"
+        >
+          Absen Masuk
+        </button>
+
+        <button
+          id = "btnPulang"
+          class="btn-pulang"
+          onclick="absen('pulang')"
+        >
+          Absen Pulang
+        </button>
+
+        <!-- STATUS -->
+
+        <div class="status-box">
+
+          <span id="status">
+
+            Siap melakukan absensi
+
+          </span>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT -->
+
+      <div class="card">
+
+        <h2>Information</h2>
+
+        <div class="info-card">
+
+          <div class="info-item">
+
+            <span>Tanggal</span>
+
+            <strong id="tanggal">
+
+            </strong>
+
+          </div>
+
+          <div class="info-item">
+
+            <span>Jam</span>
+
+            <strong id="jam">
+
+            </strong>
+
+          </div>
+
+        </div>
+
+        <div class="welcome-box">
+
+          <p>
+
+            Silakan pilih nama pegawai dan shift
+            untuk melakukan absensi masuk atau pulang.
+            <br><br>
+            Gunakan mode Manual hanya untuk
+            memperbaiki absensi yang dirasa salah.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- TOAST -->
+
+  <div id="toast"></div>
+
+  <!-- TOM SELECT -->
+
+  <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+
+  <!-- SCRIPT -->
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
