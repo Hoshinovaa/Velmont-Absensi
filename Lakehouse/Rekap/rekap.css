@@ -169,7 +169,6 @@ body{
     border-radius:12px;
 
     color:white;
-
     font-weight:600;
 
     box-shadow:
@@ -188,7 +187,15 @@ body{
     background:linear-gradient(
         135deg,
         var(--navy),
-        #4f7693
+        #4F7693
+    );
+}
+
+.batch-2{
+    background:linear-gradient(
+        135deg,
+        var(--navy-dark),
+        #2F4A6B
     );
 }
 

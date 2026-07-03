@@ -31,10 +31,11 @@ async function loadRanking() {
             else if (item.rank === 3)
                 topClass = "top3";
 
+            const batchNumber =
+                item.batch.replace("Batch ","");
+
             const batchClass =
-                item.batch === "Batch 0"
-                    ? "batch-0"
-                    : "batch-1";
+                `batch-${batchNumber}`;
 
             container.innerHTML += `
 
