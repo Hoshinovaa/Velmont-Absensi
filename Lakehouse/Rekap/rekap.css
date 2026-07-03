@@ -194,8 +194,8 @@ body{
 .batch-2{
     background:linear-gradient(
         135deg,
-        var(--navy-dark),
-        #2F4A6B
+        #5F6B7A,
+        #8A96A6
     );
 }
 
