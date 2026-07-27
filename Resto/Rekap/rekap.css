@@ -194,8 +194,16 @@ body{
 .batch-2{
     background:linear-gradient(
         135deg,
-        #5F6B7A,
-        #8A96A6
+        #0F766E,
+        #34D399
+    );
+}
+
+.batch-3{
+    background:linear-gradient(
+        135deg,
+        #7C3AED,
+        #C084FC
     );
 }
 
